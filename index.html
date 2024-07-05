@@ -1,0 +1,100 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Image Movement</title>
+    <link rel="stylesheet" href="styles.css">
+    <style type="text/css">
+
+
+
+.moving-image {
+    position: absolute;
+    width: 100px; /* Adjust the size of the image */
+    height: auto;
+    top: 0;
+    left: 0;
+    opacity: 0; /* Initially hidden */
+    transition: transform 30s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 2s ease-in-out;
+}
+
+
+    </style>
+<script type="text/javascript">
+
+document.addEventListener('DOMContentLoaded', () => {
+    const movingImage = document.getElementById('movingImage');
+    const duration = 30000; // Duration in milliseconds (30 seconds)
+    const hideDuration = 2000; // Duration to hide/show in milliseconds (2 seconds)
+
+    function getRandomPosition() {
+        const x = Math.random() * (window.innerWidth - movingImage.width);
+        const y = Math.random() * (window.innerHeight - movingImage.height);
+        return { x, y };
+    }
+
+    function moveImage() {
+        const { x, y } = getRandomPosition();
+        movingImage.style.transform = `translate(${x}px, ${y}px)`;
+        movingImage.style.opacity = '1'; // Show the image
+
+        setTimeout(() => {
+            movingImage.style.opacity = '0'; // Hide the image
+        }, duration - hideDuration);
+
+        setTimeout(moveImage, duration);
+    }
+
+    setTimeout(moveImage, hideDuration); // Start the animation after initial hide duration
+});
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const movingImage = document.getElementById('movingImage');
+    const duration = 30000; // Duration in milliseconds (30 seconds)
+    const hideDuration = 2000; // Duration to hide/show in milliseconds (2 seconds)
+
+    function getRandomPosition() {
+        const x = Math.random() * (window.innerWidth - movingImage.width);
+        const y = Math.random() * (window.innerHeight - movingImage.height);
+        return { x, y };
+    }
+
+    function moveImage() {
+        const { x, y } = getRandomPosition();
+        movingImage.style.transform = `translate(${x}px, ${y}px)`;
+        movingImage.style.opacity = '1'; // Show the image
+
+        setTimeout(() => {
+            movingImage.style.opacity = '0'; // Hide the image
+        }, duration - hideDuration);
+
+        setTimeout(moveImage, duration);
+    }
+
+    setTimeout(moveImage, hideDuration); // Start the animation after initial hide duration
+});
+
+
+
+
+
+
+</script>
+
+
+
+</head>
+<body>
+    <div class="container">
+        <img src="path_to_your_image.jpg" alt="Moving Image" class="moving-image" id="movingImage">
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
